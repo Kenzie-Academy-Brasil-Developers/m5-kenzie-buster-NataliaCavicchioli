@@ -8,6 +8,7 @@ from tests.factories import (
     create_non_employee_with_token,
     create_multiple_movies_with_employee,
 )
+import ipdb
 
 
 class MovieViewsT2Test(APITestCase):
@@ -79,7 +80,7 @@ class MovieViewsT2Test(APITestCase):
         }
         self.client.credentials(HTTP_AUTHORIZATION="Bearer " + employee_token)
         response = self.client.post(self.BASE_URL, data=movie_data, format="json")
-
+        # ipdb.set_trace()
         # STATUS CODE
         expected_status_code = status.HTTP_201_CREATED
         resulted_status_code = response.status_code
